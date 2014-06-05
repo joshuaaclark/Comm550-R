@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>COMM 550-Lab Eight and Nine- Chi<sup>2</sup> and Correlation</title>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h1>COMM 550-Lab Eight and Nine- Chi<sup>2</sup> and Correlation</h1>
+
+<h4><a href="http://joshaclark.com/?page_id=138">Back</a></h4>
+
+<p>Today we&#39;ll be looking at both the Chi<sup>2</sup> test and some forms of correlation and reliability analysis (if we have time)! Let&#39;s start by installing two packages we&#39;ll need for this demo.</p>
+
+<blockquote>
+<p>install.packages(&#39;ppcor&#39;)<br/>
+install.packages(&#39;MASS&#39;)  </p>
+</blockquote>
+
+<pre><code class="r">library(MASS)
+library(psych)
+library(ppcor)
+library(ggplot2)
+</code></pre>
+
+<p>First up is a Chi Square test. This test looks at the observed distribution of cases between
+two groups and compares it to a theoretical distribution if the two groups were totally independent.
+This is useful in determining if a factor or categorical variable is influencing a dependent variable
+you are interested in. 
+Let&#39;s look at some data built into R, a survey of 237 statistics students at the University of Adelaide. This data is built into R so we can just call it with the data() command. 
+We&#39;ll be using some randomly generated data so let&#39;s set the random number seed to start.</p>
+
+<pre><code class="r">set.seed(11)
+
+data(survey)
+head(survey)
+</code></pre>
+
+<pre><code>##      Sex Wr.Hnd NW.Hnd W.Hnd    Fold Pulse    Clap Exer Smoke Height
+## 1 Female   18.5   18.0 Right  R on L    92    Left Some Never  173.0
+## 2   Male   19.5   20.5  Left  R on L   104    Left None Regul  177.8
+## 3   Male   18.0   13.3 Right  L on R    87 Neither None Occas     NA
+## 4   Male   18.8   18.9 Right  R on L    NA Neither None Never  160.0
+## 5   Male   20.0   20.0 Right Neither    35   Right Some Never  165.0
+## 6 Female   18.0   17.7 Right  L on R    64   Right Some Never  172.7
+##        M.I   Age
+## 1   Metric 18.25
+## 2 Imperial 17.58
+## 3     &lt;NA&gt; 16.92
+## 4   Metric 20.33
+## 5   Metric 23.67
+## 6 Imperial 21.00
+</code></pre>
+
+<pre><code class="r">survey&lt;-na.omit(survey)
+</code></pre>
+
+<p>Putting on our health comm hat for a moment, say we wanted to see if gender influenced the likelihood of
+statistics students at the University of Adelaide to smoke. If there was no influence then we would expect the 
+proportion of smokers to be evenly distributed between the two genders represented in this survey.
+We can start by looking at the cross tab of the two variables.</p>
+
+<pre><code class="r">table&lt;-table(survey$Smoke, survey$Sex)
+table
+</code></pre>
+
+<pre><code>##        
+##         Female Male
+##   Heavy      4    3
+##   Never     70   64
+##   Occas      7    6
+##   Regul      3   11
+</code></pre>
+
+<p>Clearly not exactly the same, but are the differences significant? We can just drop the table that we made into R and it will
+take care of the rest.</p>
+
+<pre><code class="r">chi1&lt;-chisq.test(table) 
+</code></pre>
+
+<pre><code>## Warning: Chi-squared approximation may be incorrect
+</code></pre>
+
+<pre><code class="r">chi1
+</code></pre>
+
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  table
+## X-squared = 5.06, df = 3, p-value = 0.1675
+</code></pre>
+
+<p>Well, that isn&#39;t significant at all. The variation in the probability of smoking does not differ significantly between men and women</p>
+
+<p>Or we can pass variables like the other tests we&#39;ve used before</p>
+
+<pre><code class="r">chi2&lt;-chisq.test(survey$Smoke, survey$Sex)
+</code></pre>
+
+<pre><code>## Warning: Chi-squared approximation may be incorrect
+</code></pre>
+
+<pre><code class="r">chi2
+</code></pre>
+
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  survey$Smoke and survey$Sex
+## X-squared = 5.06, df = 3, p-value = 0.1675
+</code></pre>
+
+<p>The ChiSquare syntax in R isn&#39;t very picky, you can even reverse your terms.</p>
+
+<pre><code class="r">chi3&lt;-chisq.test(survey$Sex, survey$Smoke)
+</code></pre>
+
+<pre><code>## Warning: Chi-squared approximation may be incorrect
+</code></pre>
+
+<pre><code class="r">chi3
+</code></pre>
+
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  survey$Sex and survey$Smoke
+## X-squared = 5.06, df = 3, p-value = 0.1675
+</code></pre>
+
+<p>ChiSquare has been addressing two nominal variables, (smoking y/n and gender m/f), but what if we wanted to examine
+two ratio or interval variables then we can use PEARSON&#39;S r!!!!<br/>
+It is called R so it <strong>HAS</strong> to be good. :D<br/>
+Pearson&#39;s R has some assumptions, the variables need to be interval or ratio with some form of linear relationship.
+Let&#39;s change datasets and use another one built into R, this one looks at the weight of 144 cats.</p>
+
+<pre><code class="r">data(cats)
+head(cats)
+</code></pre>
+
+<pre><code>##   Sex Bwt Hwt
+## 1   F 2.0 7.0
+## 2   F 2.0 7.4
+## 3   F 2.0 9.5
+## 4   F 2.1 7.2
+## 5   F 2.1 7.3
+## 6   F 2.1 7.6
+</code></pre>
+
+<p>Let&#39;s add some new variables for teaching purposes, a cuteness rating which is a random variable between 1 and 5. This should
+NOT be correlated with the original variables</p>
+
+<pre><code class="r">cats$cuteness&lt;- sample(1:5, 144, replace=T)
+cats$cuteness&lt;-as.numeric(cats$cuteness)
+</code></pre>
+
+<p>And &ldquo;meow score&rdquo; an interval variable between one and one hundred</p>
+
+<pre><code class="r">cats$meow.score&lt;- runif(144, 1, 100)
+</code></pre>
+
+<p>Let&#39;s do a scatter plot to see the relationship between the body weight of cats (Bwt) and heart weight (Hwt).
+Looking at the scatter plot there seems to be a strong linear relationship there, so let&#39;s do a Pearson correlation</p>
+
+<pre><code class="r">qplot(Bwt, Hwt, data=cats)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-10"/> </p>
+
+<p>Compare that relationship to the scatter showing the correlation between Body Weight and the random variable we just created.</p>
+
+<pre><code class="r">qplot(Bwt, meow.score, data=cats)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAAwFBMVEUAAAAAADoAAGYAOjoAOpAAZrY6AAA6ADo6AGY6OpA6ZrY6kNtmAABmADpmAGZmkJBmtv9/f39/f5V/f6t/lcF/q9aQOgCQOjqQkGaQ29uQ2/+Vf3+Vq9aVweurf6urlZWrlcGr1v+2ZgC2Zjq225C2/7a2///BlX/BlZXBlavBq8HBwdbB6//Wq3/Wq5XW///bkDrb/7bb///l5eXrwZXr///y8vL/tmb/1qv/25D/68H//7b//9b//9v//+v///8T+E/hAAAACXBIWXMAAAsSAAALEgHS3X78AAARmUlEQVR4nO2dC3sTxxWGlZSkSUmoBdikUIc4bQhp7dglNoj6sv//X2VXEr6gkXZu58yZnfd7eBysJ/g98qs5Ozt7m3WkycxKF0DKBPGNBvGNBvGNBvGNBvGNBvGNBvGNBvGNBvGNBvGNBvGNBvGNJlz8H444XxzL+4h/owaKIqmBYkiIlyMhXqp4xMeTEC9HQrxU8YiPJyFejoR4qeIRH09CvBwJ8VLFIz6ehHg5EuKlikd8PAnxciTESxWP+HgS4uVIiJcqHvHxJMTLkSYi/urH0647mT89/vQV8VZAouIX82en3eL5xe0fxJsBSYq/+e/Nb6fd+eEw8Fdf+xfnfba3iM9+Mmd1Wc4OO0vxR8N/Vl/XL3t+amd9sn9qx35kFMj9Q5sd8WvxD0d8YfHjPzMCtOWHNi4+YRs/6ui2eG+biE8ghYnXmNUH6KTVx5P8xW9J9uJDxjGz+miSPfEh4xjx0SSD4kOq1wIhHvEGQYgXAyEe8QZBiBcDIR7xBkGIFwMJLBFuCeK9qlcCxS0OI16q+AmKF1mFdgXxXtFq9SLHnZxBvBwJ8VLFT088rd6zei0Qu3OVir8/kBC/5DQh/sGmE/FLDuKzku4H8VLF0+rjSY2ITwUhHvEGQYgXAyHelHi11Q7EmxKvt76JeMRbBLUmnlafQCorPnX3Ou0ivYDYbi3ViU9eUHOAhK7H5gwcxHsH8Vvj3+r9r2Gl1ftxior3Lj7jVetM7lYcAfECk23E5yYJiBe6UYWz+ggO4lecSsRvqT7i3yB+xckvXnFdpax4gd2HusWXPTonMquP2nFEvFTxavvxiEd8AAnxUsWXbfVs44sVz6w+njQ98SzZ+nGmJp6DNJ4cxHsE8fbF0+o9OZMTLwJicteoeEZ8m+LZxm/mvSPOFyXiAs1m+TmD+Pw/1Rmt353aiBeZc6kt2dLqY8XL+Ci6Vj8axP+hKF5xrX4siB+i1erHg/glR0u8RPGIjychXo6EeKniWcCJJyHeJyzgIF4WhHjP6rVAtHr74tmP9+NMTTwrd54cxMeSRoN4qeJp9fGk6YkXASEe8QZBiBcDlRUvsfUyKF7i+fFV37ZcZL5qT3zIKpkvqO4HFSA+GlS3eFp9PMjZ6kPWYZncyYsPqT4FFHTkBfGIDwYFBfFe1SeBaPW2xAuPwwondxIke+IlZvVOUFAQj3h7oGmId7d6bmmamWRQvCsBNzHmsKwfZ2riORHDk1OHeP9Wj3hPTiXit1TveI1W78eZnHgREOIRP5IShwERLwaKOgCMeKniER9PQnxmEq1eoXiL4kuAEC8GQryCeA7LapDsiefonAqpEfFVn1cvQlIT77+SKtDqKz+9WoKkJV7vBoeuIH6TU1R8agdWa/XcCiWr+OSBqPVb4uZH0eKdY6Zt8WXPJlMT74xaq78fI60+4GyyRJIzZcUnFl/1fjzi44uvWnxVrf583uewO5nPnx4j3gxIZcTf/Ofi5u3x3fcli0d8PClY/O/H3dXrV/P94e/D+B/9B6SGjIpf9MYXz06786P1CyU/tYz4eFKo+N/XXX5xiHgzIAXxVz9drKQz4g2BYi5GCRT//38OX0+GqT3izYBiLj8LFL8ZneK3BPEeJIviq1myrVl8llafV3zAQZrEZS7OwNng1CE+cWGbEzE2OSXF+w/E8fM4RjgS4s1cj12feP/iRw/n745Eqx/FI16o+LjTIxC/4lQsPu70CFr9ilOzeHbn4kmIlyMhXqr4VsQ3cr/6kOq1QEXFN/KEiqDqtUCIR3wBEK1eA5Tv5FcmdxmKVzsXOePp7ohPL17v6gPENyqeVm9KfMhN7NNAW4L4QuJdKXyQpjAo8YAj4v1iTnzqKQY1i2+61TctvpUFHGdqafUizw9oWXwiSUt82btecZbtJqcJ8Zxlu8lREl+21SN+k6MlXqJ4Wn08qRHxqSDEI94gCPFiIMTnFc/VsllA1Ymv5pamiEe8RVB14mn1eUD1iU8sHvHxJMTLkRA/hKNzciDL4lMP0pS91TPiS4kvfHN3xEeLT2z1iM9NUhOfWDytPjOpFvFbqtcCJYo3+LhcxMuRbkEWH5drULzB4YF4BfEWf0u0+kmJD7keg8nd53nviPNF78xm3v9rEmj4hOUnBfzMNFBi7I34oI9tCijo0ruYI83THvElizfY6hGvUbweyP8zknhqidp1oIj3idpjxPWu/Ea8TxDfqHiJx4hnBCFeDMR+POINgiYi3uD6JuIVxE9xrV4YZEV82gQl8hFD4aCgIH5cfOouSdxDxSJAIUG8vHjvID6BJCBerwPT6uNJEuLZnVMGIV4MhPi84rlaNgsov/jrg9mj/33/Uko818fnAWUXf33w+OO37z48eof4tsRfPnnTi++/Comn1ecBCY34M7ERj/g8oJjjHDvFD9v42Wyn95pb/fROrw5Y0tot3iO+xbsqKite5CxbFygoJsTv3roHiXeXVLTVT1B8rlZ//WLnnly6eGfxAUF8NGn3iP9u+OXMvswxqzd4D5zpbeNDOLvE+6Rk8czq40mIlyNVLF54dy61eMTHk3aKvz543H8VXMBJLB7x8aSd4le7c4JLtonFi4B4qHCbI57HiK/MN7eNR7xnShbfSquXWANBvBwpF0hk1XO3+A+zve7sC7EzcFKLR3w8aaf4y+VZVx+/CZzV65313IZ4/VZ/fbA3DPvAWb3idQ6NiJcg7RS/Okqz8xgN4g2ArEzuaPXKICvi657cGdydkyDtFn/26N3ZbLbXkviABRyJU0tsiO9n9f2f4Fl9I+JH5zIVi3/yph/zbYn3b/UTFt+dzb54+aGyVi9yjldjrd4nJYvXO6uztckd4neQRlO7+MpOxNBr9WOpXXxdI14G1Jj4y+++Qnw8qV7xw3HZ2YOjsifz+dPj/mv/BfFmQDKt/vrg7ijNzdtB+OL5Rf8H8WZAAuLP+jny47tvr16/mu9354fd1Y+n/bfzPpufFJKQWfgsKw/3wXcb2/jFs9Pu/Oj8qLv57XT9UslP7fSunTPzoIIPD0f8Uv7h7YivW7zFq2XNiB9ydreNXxx2/YifyDbeongzT6j4+PXDEd/P6g+7qczqC7f6sk9G3yn+8rvdF1NULl6apHblBit3YqDWxEtfQtX07c4Mt3rpiya5s2UeUHWXSeuJT20tjPis4tVaffInjG18XvGJxSPei+TMbvEecf5QpeJp9X4kJ6cN8amgxiZ30g8qSC0e8fGkneKlH1SQWjzi40k7xYs/qMC/+LIbxNbEiz+owLv4wlPg1sTb2Z1DfG7SbvEeUSo+sdXr7c6VWDDIL/5DvtuWSxRvcAHnPqle8Ze79+QQv5tUsfh8jyYRKZ5WH0/aKb47++xEy2rFp4Jam9ydTWQbnwxqTPxktvHJoNbET2YbnwpqTDzb+CRSveJzPn5MonjEx5N2j3iPlCxeD6R2k1bE+1WvBIq7pA3xUsUjPp6EeK/Q6hsVz+QO8QZBiBcDIR7xBkGIFwMhvlLxFq+kyQdC/LZYvHYuIwjx24L4TU4T4mn1m5w2xKeCEI94WZCV+9whPoGkdjQo5mIUxMuRjIh3/0zEy5GMtHrEJ4CqntzR6uNBVYt3cxAvRkK8VPGIjychXo6EeKniER9PShb/3hHnixJRA81mWj9T6y0x4n0icXo1tzSNL15tYRvxpsTrPbJJ5Lx67mUbW7yieCZ3lsTrtXrE2xLP7lw8CfFyJMRLFY/4eBLi5UiIlyo+EWTwadKI96w+BWTyocKI96s+BYR4FfGjv2RafTTIsnj38Gr62bL5QNWJ59myeUCWxTv7KuLzgEyLd4ZWnwVUn/jE4hEfT0K8HAnxUsUjPp6EeDkS4qWKR3w8CfFyJMQPMbhkK01C/B8+R0SmLF74aBDit6bsXa9CjgNOTbz7Q6+1clf4PndNi3dFba2+9A0OG271zugdpAloLfkucGFyty0Wj85lvKSNS6i2Ru3onD9ITTwXTcYXL9JatFo94uOLr2Zy50zLrT6xeCZ38aRGxPuD9CZ37iDeq/r8IMRriHd24MKrHaNLjLlA7jQh3jnnsri+ybNlES8LakS8s9VbFE+rzyzeWbzBIxpM7jTEh1QvAGI/vk3x7M4VE1+21SO+lHiRyR1LthucJsSbPEiTDzQN8RKtHvGbHHviQ6r3/R95tuwGR0s8F1TIgeTF3/w6nz+/6E7m86fHYeLbvqBCGCQvfrHfdSdHN2+P717yLB7xgiCdVn9+dPX61Xx/+Ou8z/g/WP/k8K0I0cu4nX7QL56d9vrX35f81DLi40mh4k/21/4PEW8GpDG5O1pLZ8QbAsmLPxm26ofDfz4NeMQbAJnej5coHvHxJAnxes8IQnw0SUC84lPBEB9NQrwcqTXxtHptkBXxTO6UQYgXAyEe8QZBiBcDId5HPJM7ZZAR8SK7c2VvH4H4UuIL3zAG8T7iJVo94nOTJMQLFI/43CTE+yXmRG7EZyi+lsnd/U8o4qWKR3w8qaz4sjc/EnmoMK3eI2XvgcNjxBEvQ0L81vjf/Ehicqf3/HiDt/UpK95Z/Ohzp3OBQhKzUHXvHdm7kZdB8a5YFD+qE/EZije4H+8vnlafufhaWn0qaDSIlwIxq0e8QRDixUCIR7xBUHPi9U7uQ7wl8YrXaiHevniR+6oh3pL4kMXdNBDibYmPWk9D/IozNfG0ek9OUfFqDxW+H8QvOSXFW3yMeEYSB2m2xaR4gQcVcFj28xhs9RKPJkF85uJrEU+rz1x8La0+JG2IN9jqM5IQvy0mJ3f5SIjfFsTnAVUnnlafB1Sf+MTiER9PQnxmEhdNKhRvUHw7l0m/d8T5okTUQN6kQbzr1eyg1DDiM5NcrZ4l28zF13I8HvGZi6/mDBzW6vMWX414YRDihxhs9dKgiYg32BcRryDe4kwI8Yi3CJqGeJOt3va1WhMRH1K9EijuKj3ESxVvUTwHaRSKN9jq2zlIU7L4wpO7sWs2ES9VfFnxo1dpI16qeIviBUDjQbwUKGpxGPFSxbOAE09CvBwJ8VLFc9ereFLN4rnr1QYp4DAH4r1SVLz3KQYBv5GaxbfS6v1PKmpFfCOTu4Czydpo9a2IFzmbDPFyJGb1UsUjPp5kULzFM3AQLy+ec+5USIiXIyE+rHhavQbJoPiQ6rVAiEe8QRDixUCIR7xBEOLFQIhHvEEQ4sVAiDclvpHj8SKkmsU3cwaOBAnxfkG8IfFTbPVqb6lq8f6g1Ntka4nXa2JtiE++MT7iEe8fWr1U8dNr9UzuPKvXAiEe8QZBiBcDIR7xBkFq4k/mT48RbwekJX7x/KL/g3gzIC3x54fd1Y+n/V/mfXz+ATEfP/FH3c1vp+tvSn5qGfHxpCjxn0Y84m2A2MaLgRC/DLN6WyD248VAiEe8QRDixUCIR7xBEOLFQIhHvEEQ4sVAiPeK2gK+3pGCCb6lB0F8aRLiTYGm+JYeBPGlSVWLJ9UF8Y0G8Y0G8Y0G8Y0mTfzNr/P56tSc+6dqCOQ+SJY0AI7Wf1EDCZNcSRO/2O/LHqp/cHKWQG5BN2+Ff0U9aXV+ocJbWoHE35Iz6a3+fPDx4HRMoSxBV69fzfdlOet3ovCWVj9f4y1tJln8YlnzgxOwZbICLZ6drj4BcjmZHw7/kX9La5DCW3IkVfzJ6rMqPzxO7gbF4lAS1C3fjVIT+/ROxN/SRlInd+tPqvQG8Q502MkOjyVg0CC+jb8FSb8lZ9LEnwzXVB1e/XQhPQW+D5rLjo4e0E+75N/SfZDwW3KF/fhGg/hGg/hGg/hGg/hGg/iu+/j1cD/EvXsvfPOmXDVKQfza88e/vnz4wsSD+LXn6xf/ONhb6v/wl69nX07ePOI/jfhv35097s76jn/2mBHfRlbb+Efvevf/+uGr6xcvEd9GVq3+YO/yyS9P/v3NL0/eIL6NrDz/vNf9/Pe/Xb/44Ssmd41k6fny+35aN1tt5RHfRm7345dz+n5Cf33ArJ5MNIhvNIhvNIhvNIhvNIhvNIhvNIhvNIhvNIhvNH8CDHoWbn/nii4AAAAASUVORK5CYII=" alt="plot of chunk unnamed-chunk-11"/> </p>
+
+<p>The difference also shows up in the correlations</p>
+
+<pre><code class="r">cor.test(cats$Bwt, cats$Hwt, method=&#39;pearson&#39;)
+</code></pre>
+
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  cats$Bwt and cats$Hwt
+## t = 16.12, df = 142, p-value &lt; 0.00000000000000022
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.7376 0.8552
+## sample estimates:
+##    cor 
+## 0.8041
+</code></pre>
+
+<pre><code class="r">cor.test(cats$Bwt, cats$meow.score, method=&#39;pearson&#39;)
+</code></pre>
+
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  cats$Bwt and cats$meow.score
+## t = -0.6296, df = 142, p-value = 0.53
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.2145  0.1118
+## sample estimates:
+##      cor 
+## -0.05276
+</code></pre>
+
+<p>Looking at the p-value and the correlation coefficent we can see that the relationship between Bwt and Hwt is highly significant, while as expected the relationship between Bwt and the randomly generated &ldquo;meow score&rdquo; is not.
+Looking at weight and cuteness the ordinal nature of cuteness comes into play creating some striated data, fortunately
+we can use Spearman&#39;s Rho to look at the relationship.</p>
+
+<pre><code class="r">qplot(Bwt, cuteness, data=cats)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-13"/> </p>
+
+<pre><code class="r">cor.test(cats$Bwt, cats$cuteness, method=&#39;spearman&#39;)
+</code></pre>
+
+<pre><code>## Warning: Cannot compute exact p-value with ties
+</code></pre>
+
+<pre><code>## 
+##  Spearman&#39;s rank correlation rho
+## 
+## data:  cats$Bwt and cats$cuteness
+## S = 403773, p-value = 0.02357
+## alternative hypothesis: true rho is not equal to 0
+## sample estimates:
+##    rho 
+## 0.1886
+</code></pre>
+
+<p>Given that cuteness was randomly generated it should be no surprise that there is not a strong correlation here
+We can also control for independent variables in our correlations</p>
+
+<pre><code class="r">pcor.test(cats$Bwt, cats$Hwt, cats$meow.score)
+</code></pre>
+
+<pre><code>##   estimate                                                         p.value
+## 1   0.8035 0.0000000000000000000000000000000000000000000000000000000008127
+##   statistic   n gp  Method
+## 1     16.03 144  1 pearson
+</code></pre>
+
+<p>Showing us that while controlling for the radnomly generated meow score variable the relationship between Bwt and Hwt remains strong</p>
+
+<h3>Bonus Section, Cronbach&#39;s Alpha</h3>
+
+<p>Cronbach&#39;s alpha is a measure of reliability, in other words how variables vary together. This is a good thing
+if you have a scale, as you want your questions to vary together as they are all measuring the same concept. 
+Higher scores are better!</p>
+
+<pre><code class="r">alpha(data.frame(cats$Bwt, cats$Hwt))
+</code></pre>
+
+<pre><code>## 
+## Reliability analysis   
+## Call: alpha(x = data.frame(cats$Bwt, cats$Hwt))
+## 
+##   raw_alpha std.alpha G6(smc) average_r S/N  ase mean  sd
+##       0.47      0.89     0.8       0.8 8.2 0.12  6.7 1.4
+## 
+##  lower alpha upper     95% confidence boundaries
+## 0.24 0.47 0.7 
+## 
+##  Reliability if an item is dropped:
+##          raw_alpha std.alpha G6(smc) average_r S/N alpha se
+## cats.Bwt       0.8       0.8    0.65       0.8  NA       NA
+## cats.Hwt       0.8       0.8    0.65       0.8  NA       NA
+## 
+##  Item statistics 
+##            n    r r.cor r.drop mean   sd
+## cats.Bwt 144 0.95  0.85    0.8  2.7 0.49
+## cats.Hwt 144 0.95  0.85    0.8 10.6 2.43
+</code></pre>
+
+<h4><a href="http://joshaclark.com/?page_id=138">Back</a></h4>
+
+</body>
+
+</html>

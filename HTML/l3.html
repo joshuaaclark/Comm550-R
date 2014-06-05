@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>COMM 550-Lab Three: Data Management and Cleaning</title>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h1>COMM 550-Lab Three: Data Management and Cleaning</h1>
+
+<h4><a href="http://joshaclark.com/?page_id=138">Back</a></h4>
+
+<p>&#39;Welcome to the Lab Three tutorial! In this guide we&#39;ll be covering how to clean
+&#39;and examine your dataset as well as compute new variables off of old ones. We&#39;ll
+be using the following packages for this exercise, if you do not already have them installed
+use the install.packages(&#39;&#39;) function to load them up.</p>
+
+<blockquote>
+<p>install.packages(&#39;car&#39;)<br/>
+install.packages(&#39;VIM&#39;)</p>
+</blockquote>
+
+<pre><code class="r">library(car)
+library(ggplot2)
+library(VIM)
+</code></pre>
+
+<p>In this guide we&#39;ll be covering how to clean 
+and examine your dataset as well as compute new variables off of old ones. 
+We will be working with some values generated through random processes, so first we 
+need to set a random number seed, this is the value which R takes as the starting
+point for random number generation, if everyone has the same seed then we&#39;ll all
+get the same random values.
+Set the seed</p>
+
+<pre><code class="r">set.seed(11)
+</code></pre>
+
+<p>Generate one random value between 5 and 10</p>
+
+<pre><code class="r">runif(1, 5.0, 10)
+</code></pre>
+
+<pre><code>## [1] 6.386
+</code></pre>
+
+<p>Cool, we all should have the same number! Okay, let&#39;s read our data from the working directory. </p>
+
+<pre><code class="r">mms&lt;-read.csv(url(&#39;http://joshaclark.com/wp-content/uploads/2014/05/mms.csv&#39;))
+</code></pre>
+
+<p>And take a look at it.</p>
+
+<pre><code class="r">head(mms)
+</code></pre>
+
+<pre><code>##   id brown red yellow blue green orange
+## 1  1     8   2      7    2     2      2
+## 2  2     4   4      5    4     2      4
+## 3  3     6   3      5    1     4      3
+## 4  4     7   2      9    1     2      2
+## 5  5     8   0      7    3     3      4
+## 6  6    10   3      4    1     1      2
+</code></pre>
+
+<p>The mms in this case represents my observations of what colors where in the packages
+of M&amp;M&#39;s I&#39;ve eaten over the past few years. Each row represents one pack of candy
+and each col. is the number of that color within the package. Now I like the red
+yellow and orange candies the best, so let&#39;s create a new variable called goodcol which
+is the total number of &ldquo;good&rdquo; candies in each package. To do that we write 
+mms$NEWVARIABLENAME and assign some series of totals to it, in this case the sum
+of all the good M&amp;M&#39;s in the package. (Data drawn from <a href="http://www.math.uah.edu/stat/data/MM.html">the Math Dept. of the University of Alabama-Huntsville</a>)</p>
+
+<pre><code class="r">mms$goodcol&lt;-mms$red+mms$yellow+mms$orange
+summary(mms$goodcol)
+</code></pre>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##       3      11      12      12      13      22      12
+</code></pre>
+
+<p>Now let&#39;s sum all of the bad colors. </p>
+
+<pre><code class="r">mms$badcol&lt;-mms$brown+mms$green+mms$blue
+summary(mms$badcol)
+</code></pre>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##     8.0    11.0    12.5    12.6    14.0    18.0       8
+</code></pre>
+
+<p>In order to statistically optimize my candy eating experience I want to see the percentage
+of each package which I&#39;ve eaten is made up of good colors and bad colors. Notice
+that I can pass variables instead of numbers and R will automatically compute each
+row.</p>
+
+<pre><code class="r">mms$pergood&lt;-mms$goodcol/(mms$goodcol+mms$badcol)
+</code></pre>
+
+<p>We can calculate the % of bad candies in two ways, once again notice the mix of 
+numbers and objects in the syntax.</p>
+
+<pre><code class="r">mms$perbad&lt;-mms$badcol/(mms$goodcol+mms$badcol)
+</code></pre>
+
+<p>OR</p>
+
+<pre><code class="r">mms$perbad&lt;-1-mms$pergood
+</code></pre>
+
+<p>We can also use R to transform variables. In this case we&#39;ll use various
+transformations to coerce the variable &ldquo;brown&rdquo; into different distributions.</p>
+
+<pre><code class="r">qplot(mms$brown, geom=&quot;histogram&quot;)
+</code></pre>
+
+<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-11"/> </p>
+
+<pre><code class="r">qplot(sqrt(mms$brown), geom=&quot;histogram&quot;)
+</code></pre>
+
+<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-11"/> </p>
+
+<pre><code class="r">qplot(log(mms$brown), geom=&quot;histogram&quot;)
+</code></pre>
+
+<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-11"/> </p>
+
+<pre><code class="r">qplot(exp(mms$brown), geom=&quot;histogram&quot;)
+</code></pre>
+
+<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-11"/> </p>
+
+<pre><code class="r">qplot(mms$brown^2,geom=&quot;histogram&quot;)
+</code></pre>
+
+<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-11"/> </p>
+
+<pre><code class="r">mms$brown.trans&lt;-sqrt(mms$brown)
+</code></pre>
+
+<p>Let&#39;s try &#39;binning&#39; the data, that is aggregating an interval variable into an
+ordinal or nominal variables. Be CAREFUL when binning your data. It can be useful
+but at the same time you are losing variance in your measurements. There is a lot 
+less specificity in have five groups of people based on their age as opposed to 
+simply entering how old they are. In this case we are going to group our count of
+good candies into two bins, &ldquo;lots&rdquo; and &ldquo;few&rdquo; based on if they are above or below the
+median of the data. First let&#39;s find the median using the summary function.</p>
+
+<pre><code class="r">summary(mms$goodcol)
+</code></pre>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##       3      11      12      12      13      22      12
+</code></pre>
+
+<p>Then let&#39;s bin the data into our two groups using the cut function. First we&#39;ll 
+create a new variable called &ldquo;candybin&rdquo; then use the function cut and provide the
+variable we are cutting (in this case goodcol). Next we&#39;ll define breaks and use the 
+c() functionality to provide a list of numbers which will serve as the points where
+where R makes the cuts. So if we provide three numbers, x,y and z then R will create 
+two bins, between x and y and between y and z. Finally we can provide labels just like
+when we named our variables in the last section. The first label will go on the first bin
+the second on the second bin etc etc.</p>
+
+<pre><code class="r">mms$candybin&lt;-cut(mms$goodcol, breaks=c(0,11,18), labels=c(&#39;few&#39;, &#39;lots&#39;))
+head(mms)
+</code></pre>
+
+<pre><code>##   id brown red yellow blue green orange goodcol badcol pergood perbad
+## 1  1     8   2      7    2     2      2      11     12  0.4783 0.5217
+## 2  2     4   4      5    4     2      4      13     10  0.5652 0.4348
+## 3  3     6   3      5    1     4      3      11     11  0.5000 0.5000
+## 4  4     7   2      9    1     2      2      13     10  0.5652 0.4348
+## 5  5     8   0      7    3     3      4      11     14  0.4400 0.5600
+## 6  6    10   3      4    1     1      2       9     12  0.4286 0.5714
+##   brown.trans candybin
+## 1       2.828      few
+## 2       2.000     lots
+## 3       2.449      few
+## 4       2.646     lots
+## 5       2.828      few
+## 6       3.162      few
+</code></pre>
+
+<pre><code class="r">summary(mms$candybin)
+</code></pre>
+
+<pre><code>##  few lots NA&#39;s 
+##   34   35   15
+</code></pre>
+
+<p>You will notice that we have a lot of NAs in the dataset. This is because I got
+hungry at ate some of the candy before counting it. There are a few strategies for 
+dealing with this problem. One is simply to delete the cases with missing data (listwise
+deletion). This can be carried out using the na.omit function. Make a new object so you
+don&#39;t overwrite your data.</p>
+
+<pre><code class="r">trimmms&lt;-na.omit(mms)
+head(trimmms)
+</code></pre>
+
+<pre><code>##   id brown red yellow blue green orange goodcol badcol pergood perbad
+## 1  1     8   2      7    2     2      2      11     12  0.4783 0.5217
+## 2  2     4   4      5    4     2      4      13     10  0.5652 0.4348
+## 3  3     6   3      5    1     4      3      11     11  0.5000 0.5000
+## 4  4     7   2      9    1     2      2      13     10  0.5652 0.4348
+## 5  5     8   0      7    3     3      4      11     14  0.4400 0.5600
+## 6  6    10   3      4    1     1      2       9     12  0.4286 0.5714
+##   brown.trans candybin
+## 1       2.828      few
+## 2       2.000     lots
+## 3       2.449      few
+## 4       2.646     lots
+## 5       2.828      few
+## 6       3.162      few
+</code></pre>
+
+<p>Oh dear, we lost a number of cases via deletion, which reduces our sample size
+fortunately there are other options for dealing with missing data. As an example we can
+use &#39;hot deck&#39; imputation. This method looks through your dataset for cases with missing values
+and then finds other cases which have similar values. From this &ldquo;deck&rdquo; of cases it will randomly
+draw a value and replace the missing information with this score. This method will create
+quite a few extra variables</p>
+
+<pre><code class="r">hotmms&lt;-hotdeck(mms)
+head(hotmms)
+</code></pre>
+
+<pre><code>##   id brown red yellow blue green orange goodcol badcol pergood perbad
+## 1  1     8   2      7    2     2      2      11     12  0.4783 0.5217
+## 2  2     4   4      5    4     2      4      13     10  0.5652 0.4348
+## 3  3     6   3      5    1     4      3      11     11  0.5000 0.5000
+## 4  4     7   2      9    1     2      2      13     10  0.5652 0.4348
+## 5  5     8   0      7    3     3      4      11     14  0.4400 0.5600
+## 6  6    10   3      4    1     1      2       9     12  0.4286 0.5714
+##   brown.trans candybin brown_imp red_imp yellow_imp blue_imp green_imp
+## 1       2.828      few     FALSE   FALSE      FALSE    FALSE     FALSE
+## 2       2.000     lots     FALSE   FALSE      FALSE    FALSE     FALSE
+## 3       2.449      few     FALSE   FALSE      FALSE    FALSE     FALSE
+## 4       2.646     lots     FALSE   FALSE      FALSE    FALSE     FALSE
+## 5       2.828      few     FALSE   FALSE      FALSE    FALSE     FALSE
+## 6       3.162      few     FALSE   FALSE      FALSE    FALSE     FALSE
+##   orange_imp goodcol_imp badcol_imp pergood_imp perbad_imp brown.trans_imp
+## 1      FALSE       FALSE      FALSE       FALSE      FALSE           FALSE
+## 2      FALSE       FALSE      FALSE       FALSE      FALSE           FALSE
+## 3      FALSE       FALSE      FALSE       FALSE      FALSE           FALSE
+## 4      FALSE       FALSE      FALSE       FALSE      FALSE           FALSE
+## 5      FALSE       FALSE      FALSE       FALSE      FALSE           FALSE
+## 6      FALSE       FALSE      FALSE       FALSE      FALSE           FALSE
+##   candybin_imp
+## 1        FALSE
+## 2        FALSE
+## 3        FALSE
+## 4        FALSE
+## 5        FALSE
+## 6        FALSE
+</code></pre>
+
+<p>Wow, what a mess, Hotdeck has created boolean variables (true/false) for each
+case, telling us what data has been changed as well as new variables. Often we 
+will not want to impute every bit of data so we can perform the same operation on 
+a single variable instead. Let&#39;s look at what hotdeck creates when it only has
+to deal with one variable</p>
+
+<pre><code class="r">hotstuff&lt;-hotdeck(mms$red)
+head(hotstuff)
+</code></pre>
+
+<pre><code>##   data data_imp
+## 1    2    FALSE
+## 2    4    FALSE
+## 3    3    FALSE
+## 4    2    FALSE
+## 5    0    FALSE
+## 6    3    FALSE
+</code></pre>
+
+<p>We have to columns created by the process, if we only want to add the values
+to our dataset we can do so by just placing a $data after the command just like
+any other column.</p>
+
+<pre><code class="r">mms$red.hot&lt;-hotdeck(mms$red)$data
+summary(mms$red)
+</code></pre>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##     0.0     3.0     4.0     3.9     5.0    10.0       2
+</code></pre>
+
+<p>Finally let&#39;s look for outliers among our data. We can do this with a box and whisker plot.
+The middle black line is the median (4) while the solid box around it shows the first 
+and third quartile. The whiskers (thin lines leading out) show the maximum and minimum
+without outliers. Outliers are those values which are 1.5 times the inter-quartile range
+(the difference between the third and first quartile) away from first quartile (for lower
+then expected scores) or third (for higher than expected scores). Let&#39;s do the math first
+then our box plots. 
+We can get all the information about quartiles by looking at the summary(mms$red.hot)
+command we just passed. So the inter-quartile range is:</p>
+
+<pre><code class="r">5-3
+</code></pre>
+
+<pre><code>## [1] 2
+</code></pre>
+
+<p>Which we can multiply by 1.5 to get</p>
+
+<pre><code class="r">ol&lt;-(5-3)*1.5
+</code></pre>
+
+<p>So upper outliers are anything beyond</p>
+
+<pre><code class="r">5+ol
+</code></pre>
+
+<pre><code>## [1] 8
+</code></pre>
+
+<p>And lower</p>
+
+<pre><code class="r">3-ol
+</code></pre>
+
+<pre><code>## [1] 0
+</code></pre>
+
+<p>Since we can&#39;t have less than zero candies we only have to worry about higher outliers
+(i.e. those greater then 8)
+Let&#39;s take a look at our boxplot</p>
+
+<pre><code class="r">boxplot(mms$red.hot)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-22"/> </p>
+
+<p>Two upper outliers we can extract them by placing the $out command behind the boxplot function</p>
+
+<pre><code class="r">outliers&lt;-boxplot(mms$red.hot)$out
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-23"/> </p>
+
+<pre><code class="r">outliers
+</code></pre>
+
+<pre><code>## [1]  9 10
+</code></pre>
+
+<p>We have two outliers, 9 and 10, both &gt;8. There are a variety of ways to deal with them
+1-Replace with the nearest non-outlier value (8). We use if-else logic for this. The 
+first statement says if the value is greater than 8, replace with 8, otherwise keep it
+with the original value.</p>
+
+<pre><code class="r">mms$red.hot.clean &lt;- ifelse(mms$red.hot&gt;8, 8, mms$red.hot) 
+summary(mms$red.hot.clean)
+</code></pre>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    0.00    3.00    4.00    3.85    5.00    8.00
+</code></pre>
+
+<pre><code class="r">table(mms$red.hot)
+</code></pre>
+
+<pre><code>## 
+##  0  1  2  3  4  5  6  7  8  9 10 
+##  3  9  8 18 18 12  7  2  5  1  1
+</code></pre>
+
+<pre><code class="r">table(mms$red.hot.clean)
+</code></pre>
+
+<pre><code>## 
+##  0  1  2  3  4  5  6  7  8 
+##  3  9  8 18 18 12  7  2  7
+</code></pre>
+
+<p>The other option is to simply cut the outliers out of the dataset to make a new body of data
+We start with</p>
+
+<pre><code class="r">nrow(mms)
+</code></pre>
+
+<pre><code>## [1] 84
+</code></pre>
+
+<p>cases, then:</p>
+
+<pre><code class="r">trimmms&lt;- mms[which(mms$red.hot&lt;8.375),]
+table(trimmms$red.hot)
+</code></pre>
+
+<pre><code>## 
+##  0  1  2  3  4  5  6  7  8 
+##  3  9  8 18 18 12  7  2  5
+</code></pre>
+
+<p>Which leaves us with less data to work with.</p>
+
+<pre><code class="r">nrow(trimmms)
+</code></pre>
+
+<pre><code>## [1] 82
+</code></pre>
+
+<p>Either route, make sure you explain and justify your choices in your methodology section.
+This week&#39;s lab is going to use the height and weight data again, you will need to bin
+and transform data, as well as deal with outliers and and missing data. Once again
+all the code you will need is within this tutorial, but you will need to change it
+to work in a new setting. You should also practice writing your own code and developing
+your own style. Some people always write variable names in CAPs or lowercase. You can
+use periods or underscores to represent spaces and much more. Experiment and find
+a style that works for you.
+Good luck!</p>
+
+<h4><a href="http://joshaclark.com/?page_id=138">Back</a></h4>
+
+</body>
+
+</html>

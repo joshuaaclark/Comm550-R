@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>COMM 550-Lab Two: Welcome to R</title>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h1>COMM 550-Lab Two: Welcome to R</h1>
+
+<h4><a href="http://joshaclark.com/?page_id=138">Back</a></h4>
+
+<p>Welcome to R! This lab will walk you through the basics of installing packages, loading data and
+performing basic descriptive statistics on a dataset. For the purposes of this demo we&#39;ll be using
+a dataset drawn from the TV show &ldquo;Grey&#39;s Anatomy.&rdquo; This data is adapted from the <a href="http://badhessian.org/2012/09/lessons-on-exponential-random-graph-modeling-from-greys-anatomy-hook-ups/">Bad Hessian</a> tutorial on ERGMs so all credit goes to them. </p>
+
+<h2>Packages</h2>
+
+<p>Packages are pieces of code which extend the functionality of R. They do everything from automating 
+basic tasks to transforming R into an awesome tool for exotic forms of analysis. In order to take 
+advantage of this power we need to learn to install packages using the simple syntax shown below.
+To run one or two lines at a time select the code and hit ctrl (or command)-enter.</p>
+
+<blockquote>
+<p>install.packages(&#39;ggplot2&#39;)<br/>
+install.packages(&#39;psych&#39;)</p>
+</blockquote>
+
+<p>Install packages needed for this lab. Once done you can &ldquo;comment out&rdquo; these lines by placing
+a &ldquo;#&#39;&rdquo; sign in front of the line. This tells the computer not to read that script. If you don&#39;t
+then R will re-download the package every time you run the entire script which is a pain. Notice
+that the brackets have to be closed and the package name in quotes, if missing a bracket R will
+prompt you in the console to complete the code, but missing quotes will break the code.</p>
+
+<pre><code class="r">istall.packages(&#39;ggplot2&#39;) 
+</code></pre>
+
+<pre><code>## Error: could not find function &quot;istall.packages&quot;
+</code></pre>
+
+<pre><code class="r">install.packages(ggplot2) 
+</code></pre>
+
+<pre><code>## Error in install.packages : object &#39;ggplot2&#39; not found
+</code></pre>
+
+<p>Mount the packages so R can use them. R won&#39;t load packages unless you tell it to in order to save memory.</p>
+
+<pre><code class="r">library(psych)
+library(ggplot2)
+</code></pre>
+
+<p>Let&#39;s read our dataset into R. The data is in the common comma separated variable format which R is very good
+at reading. As long as the file is in your working directory just use the read.csv command.</p>
+
+<pre><code class="r">dat&lt;-read.csv(url(&#39;http://joshaclark.com/wp-content/uploads/2014/05/greydata.csv&#39;))
+</code></pre>
+
+<p>Let&#39;s take a look at the data by looking at the variable names.</p>
+
+<pre><code class="r">names(dat)
+</code></pre>
+
+<pre><code>## [1] &quot;v01&quot; &quot;v02&quot; &quot;v03&quot; &quot;v04&quot; &quot;v05&quot; &quot;v06&quot; &quot;v07&quot; &quot;v08&quot;
+</code></pre>
+
+<p>Oh they aren&#39;t labeled, we need to change that
+The head command shows you the first few lines of a dataset, useful to see what&#39;s in it without
+printing out thousands and thousands of rows</p>
+
+<pre><code class="r">head(dat)
+</code></pre>
+
+<pre><code>##         v01 v02 v03  v04 v05 v06       v07 v08
+## 1      lucy   1   0 1984   1   7    Cancer   5
+## 2     adele   1   1 1949   0   2       Leo   5
+## 3     avery   0   1 1981   3   6       Leo   5
+## 4   addison   1   0 1967   1   1     Libra   5
+## 5    torres   1   2 1975   1   2     Virgo   5
+## 6 catherine   1   2 1950   1   8 Capricorn   5
+</code></pre>
+
+<p>To see the whole thing just type the name of the data frame</p>
+
+<pre><code class="r">dat
+</code></pre>
+
+<pre><code>##             v01 v02 v03  v04 v05 v06         v07 v08
+## 1          lucy   1   0 1984   1   7      Cancer   5
+## 2         adele   1   1 1949   0   2         Leo   5
+## 3         avery   0   1 1981   3   6         Leo   5
+## 4       addison   1   0 1967   1   1       Libra   5
+## 5        torres   1   2 1975   1   2       Virgo   5
+## 6     catherine   1   2 1950   1   8   Capricorn   5
+## 7          owen   0   0 1973   2   5         Leo   4
+## 8    ellis grey   1   0 1957   1   1       Virgo   4
+## 9       perkins   0   0 1965   6   7         Leo   4
+## 10         reed   1   0 1981   3   6    Aquarius   4
+## 11       olivia   1   0 1982   5   1   Capricorn   4
+## 12        izzie   1   0 1978   3   1 Sagittarius   4
+## 13        lloyd   0   1 1971   5   7   Capricorn   4
+## 14 mrs. seabury   1   0 1952   0   3         Leo   4
+## 15      preston   0   1 1963   1   1         Leo   4
+## 16        derek   0   0 1966   1   1   Capricorn   4
+## 17          ava   1   0 1975   0   3      Gemini   3
+## 18        denny   0   0 1966   0   2      Taurus   3
+## 19         hahn   1   0 1967   1   2      Gemini   3
+## 20       kepner   1   0 1980   3   6       Libra   3
+## 21         hank   0   0 1975   0   1 Sagittarius   3
+## 22          ben   0   1 1972   6   6    Aquarius   3
+## 23         lexi   1   0 1982   3   3       Aries   3
+## 24       amelia   1   0 1981   1   7       Libra   3
+## 25  thatch grey   0   0 1955   0   2         Leo   3
+## 26       pierce   0   0 1986   4   4        &lt;NA&gt;   3
+## 27   susan grey   1   0 1959   0   2      Taurus   3
+## 28       altman   1   0 1969   1   6      Pisces   3
+## 29         finn   0   0 1970   0   2      Cancer   3
+## 30         yang   1   3 1971   3   1      Cancer   3
+## 31        karev   0   0 1970   3   1      Cancer   3
+## 32        steve   0   0 1984   0   2      Gemini   2
+## 33       burton   0   0 1972   0   7      Cancer   2
+## 34        colin   0   0 1944   1   3      Taurus   2
+## 35         grey   1   0 1969   3   1     Scorpio   2
+## 36      arizona   1   0 1976   1   5         Leo   2
+## 37        megan   1   0 1979   4   4        &lt;NA&gt;   2
+## 38     o&#39;malley   0   0 1973   3   1       Aries   2
+## 39       bailey   1   1 1969   1   1       Virgo   2
+## 40        nancy   1   0 1965   0   3         Leo   2
+## 41        sloan   0   0 1972   1   2     Scorpio   2
+## 42       mostow   0   0 1985   4   4      Gemini   1
+## 43       tucker   0   1 1970   0   2         Leo   1
+## 44        chief   0   1 1954   2   1     Scorpio   1
+</code></pre>
+
+<p>Okay, time to name our variables something sensible. The c(&ldquo;) indicator marks a list of strings
+which R will assign to variables in order. So name goes on the first col. gender on the second etc.</p>
+
+<pre><code class="r">names(dat) &lt;- c(&quot;name&quot;,&quot;gender&quot;, &quot;race&quot;, &quot;byear&quot;, &quot;position&quot;, &quot;season&quot;, &quot;sign&quot;, &quot;rank&quot;)
+names(dat)
+</code></pre>
+
+<pre><code>## [1] &quot;name&quot;     &quot;gender&quot;   &quot;race&quot;     &quot;byear&quot;    &quot;position&quot; &quot;season&quot;  
+## [7] &quot;sign&quot;     &quot;rank&quot;
+</code></pre>
+
+<pre><code class="r">head(dat)
+</code></pre>
+
+<pre><code>##        name gender race byear position season      sign rank
+## 1      lucy      1    0  1984        1      7    Cancer    5
+## 2     adele      1    1  1949        0      2       Leo    5
+## 3     avery      0    1  1981        3      6       Leo    5
+## 4   addison      1    0  1967        1      1     Libra    5
+## 5    torres      1    2  1975        1      2     Virgo    5
+## 6 catherine      1    2  1950        1      8 Capricorn    5
+</code></pre>
+
+<p>R will makes best guesses about the measurement levels of your variables but you may have to recode. In this case
+we&#39;ll be treating position as a factor, or a nominal variable. So each job title is distinct and unordered.</p>
+
+<pre><code class="r">dat$position&lt;-factor(dat$position, level=c(0:6), labels=c(&#39;non-staff&#39;,&#39;attending&#39;,&#39;chief&#39;, &#39;resident&#39;, &#39;intern&#39;, &quot;nurse&quot;, &#39;other&#39;))
+</code></pre>
+
+<p>We can do the same with gender and race, making it a factor and assigning a variable name</p>
+
+<pre><code class="r">dat$gender&lt;-factor(dat$gender, labels=c(&#39;Male&#39;,&#39;Female&#39;))
+dat$race&lt;-factor(dat$race, level=c(0:3), labels=c(&#39;White&#39;,&#39;Black&#39;,&quot;Latino&quot;, &quot;Asian&quot;))
+summary(dat$race)                
+</code></pre>
+
+<pre><code>##  White  Black Latino  Asian 
+##     33      8      2      1
+</code></pre>
+
+<p>R will do its best to identify factors beforehand, as an example it has already labelled sign as a factor because
+it doesn&#39;t contain any numbers.                </p>
+
+<pre><code class="r">is.factor(dat$sign)                
+</code></pre>
+
+<pre><code>## [1] TRUE
+</code></pre>
+
+<p>Now we want to make an ordered variable representing how many seasons a back a character was introduced
+Unfortunately the only data that we have is what season they appeared, so right now Yang, played by (Sandra Oh)
+would have a score of 1 because that is the season she joined the show, but we want her character to have a score
+of 8 representing her duration as a member of the cast. Therefore we need to recode. Reverse coding is easy, just subtract
+the old variable from a value+1 of its max value.</p>
+
+<pre><code class="r">maxseason&lt;-max(dat$season)+1
+maxseason
+</code></pre>
+
+<pre><code>## [1] 9
+</code></pre>
+
+<pre><code class="r">dat$intro=maxseason-dat$season
+</code></pre>
+
+<p>Finally let&#39;s look at the rank variable, this is a ranking of characters by fans from 1 (awful) to 5(awesome)
+This makes it an ordinal variable but R is not treating it as such</p>
+
+<pre><code class="r">is.ordered(dat$rank)
+</code></pre>
+
+<pre><code>## [1] FALSE
+</code></pre>
+
+<p>To convert it, use the following command</p>
+
+<pre><code class="r">dat$rank&lt;-ordered(dat$rank)
+</code></pre>
+
+<p>Run is.ordered again to check to make sure it worked</p>
+
+<pre><code class="r">is.ordered(dat$rank)
+</code></pre>
+
+<pre><code>## [1] TRUE
+</code></pre>
+
+<p>Good stuff! Let&#39;s take a look at what our dataset looks like now.</p>
+
+<pre><code class="r">head(dat)
+</code></pre>
+
+<pre><code>##        name gender   race byear  position season      sign rank intro
+## 1      lucy Female  White  1984 attending      7    Cancer    5     2
+## 2     adele Female  Black  1949 non-staff      2       Leo    5     7
+## 3     avery   Male  Black  1981  resident      6       Leo    5     3
+## 4   addison Female  White  1967 attending      1     Libra    5     8
+## 5    torres Female Latino  1975 attending      2     Virgo    5     7
+## 6 catherine Female Latino  1950 attending      8 Capricorn    5     1
+</code></pre>
+
+<p>Descriptive stats are easy to do with the &#39;psych&#39; package we installed and mounted earlier. All we do is run the following:</p>
+
+<pre><code class="r">descriptives&lt;-describe(dat)
+descriptives
+</code></pre>
+
+<pre><code>##           vars  n    mean    sd median trimmed   mad  min  max range  skew
+## name*        1 44   22.50 12.85   22.5   22.50 16.31    1   44    43  0.00
+## gender*      2 44    1.52  0.51    2.0    1.53  0.00    1    2     1 -0.09
+## race*        3 44    1.34  0.68    1.0    1.19  0.00    1    4     3  2.09
+## byear        4 44 1970.09 10.43 1971.0 1970.83  8.90 1944 1986    42 -0.61
+## position*    5 44    2.80  1.75    2.0    2.58  1.48    1    7     6  0.79
+## season       6 44    3.25  2.26    2.0    3.06  1.48    1    8     7  0.63
+## sign*        7 42    6.26  3.12    6.0    6.18  2.97    1   12    11  0.32
+## rank*        8 44    3.14  1.13    3.0    3.14  1.48    1    5     4  0.02
+## intro        9 44    5.75  2.26    7.0    5.94  1.48    1    8     7 -0.63
+##           kurtosis   se
+## name*        -1.28 1.94
+## gender*      -2.04 0.08
+## race*         4.13 0.10
+## byear        -0.32 1.57
+## position*    -0.42 0.26
+## season       -1.13 0.34
+## sign*        -0.91 0.48
+## rank*        -0.83 0.17
+## intro        -1.13 0.34
+</code></pre>
+
+<p>Easy, eh? We can also pass single variables or lists of variables to get more focused stats</p>
+
+<pre><code class="r">describe(dat$byear)
+</code></pre>
+
+<pre><code>##   vars  n mean    sd median trimmed mad  min  max range  skew kurtosis
+## 1    1 44 1970 10.43   1971    1971 8.9 1944 1986    42 -0.61    -0.32
+##     se
+## 1 1.57
+</code></pre>
+
+<p>Similarly frequency tables can be found with the table() function. Passing the entire dataset makes a mess so let&#39;s just look
+at position                 </p>
+
+<pre><code class="r">table(dat$position)
+</code></pre>
+
+<pre><code>## 
+## non-staff attending     chief  resident    intern     nurse     other 
+##        12        14         2         9         3         2         2
+</code></pre>
+
+<p>Running the same command over and over again is a pain, so the &quot;apply&rdquo; family of functions automates this
+lapply looks over a list and runs the command &ldquo;table&rdquo; on each of the variables listed, giving us multiple
+frequency tables at one. Try adding or removing variable names to see what happens.                 </p>
+
+<pre><code class="r">lapply(dat[c(&#39;gender&#39;, &#39;race&#39;, &#39;sign&#39;, &#39;position&#39;)],table)
+</code></pre>
+
+<pre><code>## $gender
+## 
+##   Male Female 
+##     21     23 
+## 
+## $race
+## 
+##  White  Black Latino  Asian 
+##     33      8      2      1 
+## 
+## $sign
+## 
+##    Aquarius       Aries      Cancer   Capricorn      Gemini         Leo 
+##           2           2           5           4           4          10 
+##       Libra      Pisces Sagittarius     Scorpio      Taurus       Virgo 
+##           3           1           2           3           3           3 
+## 
+## $position
+## 
+## non-staff attending     chief  resident    intern     nurse     other 
+##        12        14         2         9         3         2         2
+</code></pre>
+
+<p>Let&#39;s say we are interested in the breakdown between character gender and position on the show. The first step
+is to make a cross-tabulation. This shows genders as columns and position as rows with the frequency of people who
+fit both descriptors as a value at the intersection of the two.                 </p>
+
+<pre><code class="r">genderjob&lt;-table(dat$position, dat$gender)
+genderjob
+</code></pre>
+
+<pre><code>##            
+##             Male Female
+##   non-staff    7      5
+##   attending    4     10
+##   chief        2      0
+##   resident     3      6
+##   intern       2      1
+##   nurse        1      1
+##   other        2      0
+</code></pre>
+
+<p>We can transpose the table to make gender the rows and position the columns by flipping the order of the two in the
+syntax.                 </p>
+
+<pre><code class="r">jobgender&lt;-table(dat$gender,dat$position)                 
+jobgender
+</code></pre>
+
+<pre><code>##         
+##          non-staff attending chief resident intern nurse other
+##   Male           7         4     2        3      2     1     2
+##   Female         5        10     0        6      1     1     0
+</code></pre>
+
+<p>To represent things as a clustered plot we can use the ggplot2 plackage. First we call the qplot function  (quick plot), provide the variable we want to examine (gender) as well as the dataframe (dat), then the &ldquo;geom&rdquo; or type of graph (in this case a histogram) and tell R to segement the graph by position so we can compare.            </p>
+
+<pre><code class="r">m&lt;-qplot(gender, data=dat, geom=&#39;histogram&#39;, fill=position)
+m
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-22"/> </p>
+
+<p>ggplot2 is vert versatile, if we simply wanted to see the distribution of fan rankings we can simplify the synax above and get:              </p>
+
+<pre><code class="r">n&lt;-qplot(rank, data=dat, geom=&#39;histogram&#39;)                 
+n
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAAtFBMVEUAAAAAADoAAGYAOmYAOpAzMzM6AAA6ADo6AGY6OgA6OmY6OpA6kJA6kNtmAABmADpmAGZmOgBmOpBmtv9/f39/f5V/f6t/lcF/q9aQOgCQOjqQZgCQ2/+Vf3+VlcGVweurf6urlZWr1v+2ZgC2///BlX/BlZXBlavBwdbB6//Wq3/W///bkDrb///l5eXrwZXr1qvr///y8vL/tmb/1qv/25D/68H//7b//9b//9v//+v///+Zf3WYAAAACXBIWXMAAAsSAAALEgHS3X78AAAMWElEQVR4nO3ci3ZT1xVGYZfSlF7IpRYEUijXALZhuQFRwHr/96p0uJgQjCz7n/KCPfdISsgYZ7LO+nwkEaA7C8+QZ+eiB/BczBF+0CP8oEf4QY/wgx7hBz3CD3qEH/QIP+gRftAj/KBH+EGP8IOeTeBr83OWa6wiVeEHrQo/aFX4QavCD1oVftCq8INWhR+0KvygVeEHrQo/aFX4QavCD1oVftCq8INWhR+0KvygVeEHrZ4e/vXdg8Vifza7tif8N1A9Nfx8dv1gcfRo7/jfbGdAq0z1tPBHT44eHyxe37s9u7H67mx5Tn5x6H3+Ej0XfTeh84WX+hX8fPnUH95/9y+285WZr2bh2Vm56mbwqzO/I/xw8Ct0n/gB4Vef6t8/8MIPAv+Hs50B81Xhp0uEF1544YUXXnjhhRdeeOHZAfNV4adLhBdeeOGFF1544YUXXnjh2QHzVeGnS4QXXnjhhRdeeOGFF1544dkB81Xhp0uEF1544YUXXnjhhRdeeOHZAfNV4adLhBdeeOGFF1544YUXXnjh2QHzVeGnS4QXXnjhhRdeeOGFF1544dkB81Xhp0uEF1544YUXXnjhhRdeeOHZAfNV4adLhBdeeOGFF1544YUXXnjh2QHzVeGnS4QXXnjhhRdeeOGFF1544dkB81Xhp0vODv9883OWa+LVLDw7K1f1iT/nYWflqsILL7zwwgsvvPDCCy+88PCA+arw0yXCCy+88MILL7zwwgsvvPDsgPmq8NMlwgsvvPDCCy+88MILL7zw7ID5qvDTJcILL7zwwgsvvPDCCy+88OyA+arw0yXCCy+88MILL7zwwgsvvPDsgPmq8NMlwgsvvPDCCy+88MILL7zw7ID5qvDTJcILL7zwwgsvvPDCCy+88OyA+arw0yXCCy+88MILL7zwwgsvvPDsgPmq8NMlwgsvvPDCCy+88MILL7zw7ID5qvDTJcIL/2X413cPFov92bU94YeCn8+uHyzmP/+2/Ev4geCPnhw9Plgc3nn74C9my3Pyi0PsRImQKFPdwmo/OV94qZ/g70/fvD1b+MqMbhOJMlV6r7XJe/zvnnjh0Sq919oUftvv8cg2o9FB4Lf9qR7ZZjQ6APwfzuY/mPAbRqm9lvA9q/ReS/ieVXqvJXzPKr3XEr5nld5rCd+zSu+1hO9Zpfdawves0nst4XtW6b2W8D2r9F5L+J5Veq8lfM8qvdcSvmeV3msJ37NK77WE71ml91rC96zSey3he1bpvZbwPav0Xkv4nlV6ryV8zyq91xK+Z5Xeawnfs0rvtYTvWaX3WsL3rNJ7LeF7Vum9lvA9q/ReS/ieVXqvJXzPKr3XEr5nld5rCd+zSu+1hO9Zpfdawves0nst4XtW6b2W8D2r9F5L+J5Veq8lfM8qvdcSvmeV3msJ37NK77WE71ml91rC96zSey3he1bpvZbwPav0Xkv4nlV6ryV8zyq91xK+Z5Xeawnfs0rvtYTvWaX3WsL3rNJ7rTXwr358+OF/hd9ild5rfRH+1fc7b8/lZ8Jvt0rvtU71xJ90Nv/BhN8wSu21fI/vWaX3WuvgX0wv9Zd8j99yld5rrXup/37XJ/4iqvRey/f4nlV6r7Xupf7BVeEvokrvtda+1PsefyFVeq/lp/qeVXqvJXzPKr3X8qW+Z5Xea53qiX96wie8zX8w4TeMUnutU8H7izRbr9J7rVPBv/ClfttVeq91uvf4E/7z3fPNz6bXRLeJRJkqvdfVJeuf+JPO5l9lPvEbRqm9lj+d61ml91rr4N/cPPn3YQjPVem91hr4NzdXP5N76u/A2XaV3mv5e+56Vum9lk98zyq91/I9vmeV3mv5qb5nld5rCd+zSu+11v9my93F0z/dEn7LVXqvte5T/Q8r85dX/FS/5Sq911r7qX71n+lf+Kl+21V6r7XupX76VZoTfnFOeK5K77X8cNezSu+1hO9Zpfdawves0nst4XtW6b2W8D2r9F5L+J5Veq8lfM8qvdcSvmeV3msJ37NK77WE71ml91rC96zSey3he1bpvZbwPav0Xkv4nlV6ryV8zyq91xK+Z5Xeawnfs0rvtYTvWaX3WsL3rNJ7LeF7Vum9lvA9q/ReS/ieVXqvJXzPKr3XEr5nld5rCd+zSu+1hO9Zpfdawves0nst4XtW2QUI37YqPHHf0ajwwgNR4ZP3HY0KLzwQFT5539Go8MIDUeGT9x2NCi88EBU+ed/RqPDCA1Hhk/cdjQovPBAVPnnf0ajwwgNR4ZP3HY0KLzwQFT5539Go8MIDUeGT9x2NCi88EBU+ed/RqPDCA1Hhk/cdjY4Cvz+bXdsTnq62gz96tHf8HeGxajv41/duz26s/mG2PGteHBInet9IlKmyC/jcWQM/v36wOLz/7js+8Vi13RM/4d8Rnq62g1+h+8Tz1Xbwq0/17x944blqP/iPj/BYVXjivqNR4YUHosIn7zsaFV54ICp88r6jUeGFB6LCJ+87GhVeeCAqfPK+o1HhhQeiwifvOxoVXnggKnzyvqNR4YUHosIn7zsaFV54ICp88r6jUeGFB6LCJ+87GhVeeCAqfPK+o1HhhQeiwifvOxoVXnggKnzyvqNR4YUHosIn7zsaFV54ICp88r6jUeGFB6LCJ+87GhVeeCAqfPK+o1HhhQeiwifvOxoVXnggKnzyvqNR4YUHosIn7zsaFV54ICp88r6jUeGFB6LCJ+87GhVeeCAqfPK+o1HhhQeiwifvOxoVXnggKnzyvqPR4eGZCZFqNCo8MiFSjUaFRyZEqtGo8MiESDUaFR6ZEKlGo8IjEyLVaFR4ZEKkGo0Kj0yIVKNR4ZEJkWo0KjwyIVKNRoVHJkSq0ajwyIRINRoVHpkQqUajI8I///hEJ2Sr0ShThde6Oj7xHau9n3jhsarwRDUaFR6ZEKlGo8IjEyLVaFR4ZEKkGo0Kj0yIVKNR4ZEJkWo0KjwyIVKNRoVHJkSq0ajwyIRINRoVHpkQqUajwiMTItVoVHhkQqQajQqPTIhUo1HhkQmRajQqPDIhUo1GhUcmRKrRqPDIhEg1GhUemRCpRqPCIxMi1WhUeGRCpBqNCo9MiFSjUeGRCZFqNCo8MiFSjUaFRyZEqtGo8MiESDUaFR6ZEKlGo8IjEyLVaFR4ZEKkGo0Kj0yIVKNR4ZEJkWo0KjwyIVKNRoVHJkSq0ajwyIRINRoVHpkQqUajwiMTItVoVHhkQqQajQqPTIhUo1HhkQmRajQqPDIhUo1GhUcmRKrRqPDIhEg1GhUemRCpRqPCIxMi1WhUeGRCpBqNCo9MiFSjUeGRCZFqNCo8MiFSjUaFRyZEqtGo8MiESDUaFR6ZEKlGo8IjEyLVaFR4ZEKkGo0Kj0yIVKNR4ZEJkWo0KjwyIVKNRoVHJkSq0ajwyIRINRoVHpkQqUajwiMTItVoVHhkQqQajQqPTIhUo1HhkQmRajQqPDIhUo1GhUcmRKrR6Cjw+7Nre8Lj1Xbw859/W/4lPF1tB394Z/H67sHyH2bLs+bFwfM1nXXw9xdHjw/efac2P2e5xipS3RD+/RMv/Nde3Qz+5Pd4bECrTHUz+JM/1WMDWmWqG8J/fLYzoFWmKvygVeEHrQo/aFX4QavCD1oVftCq8INWhR+0KvygVeEHrQo/aFX4QavCD1oVftDqOeDPcJjfp2f1/FXhB60KP2hV+EGrMLyn6xF+0CP8oEf4QY/wgx4W/viPX+XO0a+z2Yc/3JM7+7PZ/Xh0Mf0htPhZznr8x1zOeFD4+ex6Hn5+Y3nncaNllfgqXa4gD3/06LzqCxb+6Mnxn7TNnkPi4STg//ef/+bhX9+7Pbtx3gj7Ug/Bz8992585+8Czufxamuer8+Xr6Lm/9L9G+H3CfUG8HR+u/v8kgDf5Jf55q18f/NGvxOv8apHE57DzC30+OeATv888Rcss8kICwK9mPXfVn8cPeoQf9Ag/6BF+0CP8oEf4T86bX25d9AhbOcJ/coQf4rz8+0+XHr78bmdnd/HyH/9efbOEf3Pz8rOLHgw/o8N/t7t49cOtxcsrS/6rixeXny3hH1y96LG2cEaHv/Jw+vbVjw9X/7j8+80vfxvBXfgV/IOdnUsf4G/+81/f/gu98EvtV9/vTi/175/4W09HeOSFf/v3X28dww/xwV74xeLpzs6ff9o9hv/wzv8tn8Hhxz3CD3qEH/QIP+gRftAj/KBH+EGP8IMe4Qc9wg96/g9uI/c4RiZxNwAAAABJRU5ErkJggg==" alt="plot of chunk unnamed-chunk-23"/> </p>
+
+<p>And done! Great work! R is extremely forgiving with regards to errors and messing things up. If things go wrong
+you can always reload your dataset from the hard drive to roll back changes. Mess around with the help files by adding
+?? before commands in the console or searching the help tab to the right. This demo should give you all the tools you need
+to do the lab, or email me at <a href="mailto:joshuaac@usc.edu">joshuaac@usc.edu</a>                </p>
+
+<h4><a href="http://joshaclark.com/?page_id=138">Back</a></h4>
+
+</body>
+
+</html>
